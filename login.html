@@ -22,22 +22,26 @@
 				</div>
 			</div><a class="link" href="registration.html">Регистрация</a>
 		</div>
-		<form class="plate" action="success.html">
+		<form class="plate" action="success.html" id="formLogin">
 			<div class="plate__heading">Вход на сайт</div>
-			<div class="error">Введите email</div>
-			<div class="error">Неверный формат email</div>
-			<div class="error">Введите пароль</div>
-			<div class="error error--with-desc">Неверный email или пароль</div>
-			<div class="error-description">
+			<!-- <div class="error err-email-hide" data-error-email="Введите email"></div> -->
+			<!-- <div class="error err-format-email-hide">Неверный формат email</div> -->
+			<!-- <div class="error err-password-hide">Введите пароль</div> -->
+			<!-- <div class="error error--with-desc err-email-password-hide">Неверный email или пароль</div>
+			<div class="error-description err-email-password-hide">
 				<p>Введите верные данные для входа или воспользуйтесь <a href="#">восстановлением пароля, </a>чтобы войти на сайт.</p>
-			</div>
-			<input class="input" type="text" placeholder="Введите имя" name="name"/>
-			<input class="input" type="password" placeholder="Пароль" name="password"/>
+			</div> -->
+			<input class="input" type="text" placeholder="Введите имя" name="name" data-field-mail="mail@mail.com" />
+			<input class="input" type="password" placeholder="Пароль" name="password" data-field-pass="123" />
 			<div class="plate__links">
 				<label class="label form__label-checkbox">
 					<input class="form__input-checkbox" type="checkbox"/><span class="form__checkbox"> </span>Запомнить меня
 				</label><a class="link" href="#">Забыл пароль</a>
-			</div><a class="button button--login" href="#">Войти<span class="button__icon button__icon--right"><i class="fas fa-angle-right"> </i></span></a>
+			</div>
+			<div class="button-block">
+			<input id="signIn" class="button button--login" type="submit" value="Войти">
+			<span class="button__icon button__icon--right"><i class="fas fa-angle-right"> </i></span>
+			</div>
 	</form>
 	<div class="login-footer">
 		<p>&copy; Юрий Ключевский</p>
@@ -45,7 +49,7 @@
 	</div>
 </div>
 <script src="libs/jquery/jquery.min.js"></script>
-<script src="js/main.js"></script>
+<script src="js/login-form-check.js"></script>
 <script defer="defer" src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </body>
 </html>

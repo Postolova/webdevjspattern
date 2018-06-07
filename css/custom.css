@@ -7,3 +7,23 @@
   margin-top: 55px;
   margin-bottom: 55px;
 }
+
+.err-email-hide,
+.err-format-email-hide,
+.err-password-hide,
+.err-email-password-hide {
+	display: none;
+}
+
+.button {
+	line-height: 1;
+	padding-top: 1px;
+}
+.button-block {
+	position: relative;
+}
+.button__icon {
+	position: absolute;
+	top: 30%;
+	right: 10%;
+}
