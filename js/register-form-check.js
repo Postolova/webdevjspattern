@@ -23,7 +23,7 @@ $(document).ready(function(){
 				e.preventDefault();
 
 			// Получаем данные которые ввел пользователь в поля формы
-			var _email = $('[data-field-mail]').val().trim();
+			var _email = $('[data-field-mail]').val().trim().toLowerCase();
 			var _password = $('[data-field-pass]').val().trim();
 
 			// Делаем проверку на пустые поля
