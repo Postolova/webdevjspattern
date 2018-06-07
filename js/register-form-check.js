@@ -74,10 +74,7 @@ $(document).ready(function(){
 					$('[data-field-mail]').on('focus', function(){
 					_errFormatMail.fadeOut(1000);
 					});
-					
 				}
-
-
 			if ( _password == "") {
 				$('[data-error-password]').remove();
 
@@ -93,12 +90,8 @@ $(document).ready(function(){
 					_errPass.fadeOut(1000);
 				})
 			}
-			
-
 			})
-
-	}
-
+		}
 		return {
 			init
 		}
