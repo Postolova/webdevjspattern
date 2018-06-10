@@ -81,15 +81,17 @@ $(document).ready(function(){
 					_errorLogin();
 				} else if ( !_pattern.test( _email ) ) {
 					_errorFormatMail();
+				} else if ( _email == "mail@mail.com" ) {
+					_errorLoginPass();
 				}
 				if ( _password == "" ) {
 					_errorPass();
 				}
 			} else {
-					if (  _pattern.test( _email ) &&  _password != '' ) {
-						$(_formReg).unbind('submit').submit();
-					} else if ( _email == "mail@mail.com" ) {
-							_errLogin();
+					if ( _email == "mail@mail.com"  ) {
+						_errorLoginPass();
+					} else if ( _pattern.test( _email ) &&  _password != '' ) {
+							$(_formReg).unbind('submit').submit();
 						} 	
 				}
 
