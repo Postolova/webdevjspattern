@@ -2,6 +2,8 @@ $(document).ready(function(){
 
 	var checkRegistration = (function(){
 		// переменные
+		var _emailField = $('[data-field-mail]');
+		var _passField = $('[data-field-pass]');
 		var _adminemail = 'mail@mail.ru';
 		var _adminpass = '123';
 		var _formReg = $("#formRegistration");
@@ -25,37 +27,37 @@ $(document).ready(function(){
 				e.preventDefault();
 
 			// Получаем данные которые ввел пользователь в поля формы
-			var _email = $('[data-field-mail]').val().trim().toLowerCase();
-			var _password = $('[data-field-pass]').val().trim();
+			var _email = _emailField.val().trim().toLowerCase();
+			var _password = _passField.val().trim();
 
 			function _errorLogin() {
-				_errEmail.text($('[data-field-mail]').attr('data-field-mail'));
-				$('[data-field-mail]').before(_errEmail);	
+				_errEmail.text(_emailField.attr('data-field-mail'));
+				_emailField.before(_errEmail);	
 				_errEmail.fadeIn(1000);
-				$('[data-field-mail]').on('focus', function(){
+				_emailField.on('focus', function(){
 					_errEmail.fadeOut(1000);
 				});
 			}
 
 			function _errorPass() {
-				_errPass.text($('[data-field-pass]').attr('data-field-pass'));
-				$('[data-field-mail]').before(_errPass);	
+				_errPass.text(_passField.attr('data-field-pass'));
+				_emailField.before(_errPass);	
 				_errPass.fadeIn(1000);
-				$('[data-field-pass]').on('focus', function(){
+				_passField.on('focus', function(){
 					_errPass.fadeOut(1000);
 				});
 			}
 
 			function _errorLoginPass() {
-				$('[data-field-mail]').before(_errLogin); // добавляем ошибку перед вводом логина
+				_emailField.before(_errLogin); // добавляем ошибку перед вводом логина
 				
 				_errLogin.fadeIn(1000); // плавно ее показываем
 
-				$('[data-field-pass]').on('focus', function(){
+				_passField.on('focus', function(){
 					_errLogin.fadeOut(1000);
 				});
 
-				$('[data-field-mail]').on('focus', function(){
+				$_emailField.on('focus', function(){
 					_errLogin.fadeOut(1000);
 				});
 			}
@@ -65,11 +67,11 @@ $(document).ready(function(){
 
 				_errFormatMail = _errFormatMail.text(_errorFormatMailText); // добавляем текст в тег
 
-				$('[data-field-mail]').before(_errFormatMail); // добавляем ошибку перед вводом логина
+				_emailField.before(_errFormatMail); // добавляем ошибку перед вводом логина
 
 				_errFormatMail.fadeIn(1000);
 
-				$('[data-field-mail]').on('focus', function(){
+				_emailField.on('focus', function(){
 					_errFormatMail.fadeOut(1000);
 				});
 			}
