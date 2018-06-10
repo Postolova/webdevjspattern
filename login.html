@@ -24,15 +24,8 @@
 		</div>
 		<form class="plate" action="success.html" id="formLogin">
 			<div class="plate__heading">Вход на сайт</div>
-			<!-- <div class="error err-email-hide" data-error-email="Введите email"></div> -->
-			<!-- <div class="error err-format-email-hide">Неверный формат email</div> -->
-			<!-- <div class="error err-password-hide">Введите пароль</div> -->
-			<!-- <div class="error error--with-desc err-email-password-hide">Неверный email или пароль</div>
-			<div class="error-description err-email-password-hide">
-				<p>Введите верные данные для входа или воспользуйтесь <a href="#">восстановлением пароля, </a>чтобы войти на сайт.</p>
-			</div> -->
-			<input class="input" type="text" placeholder="Введите имя" name="email" data-field-mail="Введите email" />
-			<input class="input" type="password" placeholder="Пароль" name="password" data-field-pass="Введите пароль" />
+			<input class="input" type="text" placeholder="Введите имя" name="email" data-field-mail data-error="Введите email" data-error-format="Неверный формат email"/>
+			<input class="input" type="password" placeholder="Пароль" name="password" data-field-pass data-error="Введите пароль" />
 			<div class="plate__links">
 				<label class="label form__label-checkbox">
 					<input class="form__input-checkbox" type="checkbox"/><span class="form__checkbox"> </span>Запомнить меня

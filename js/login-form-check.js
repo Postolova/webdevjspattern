@@ -9,15 +9,17 @@ $(document).ready(function(){
 		var _adminpass = '123';
 		var _formLogin = $("#formLogin");
 		var _pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i;
-		var _errEmail = $('<div class="error err-email-hide"></div>');
-		var _errPass = $('<div class="error err-email-hide"></div>');
-		// var _errMail = $('<div class="error err-email-hide" data-error-email="Введите email"></div>');
-		var _errFormatMail = $('<div class="error err-format-email-hide" data-error-format-email="Неверный формат email"></div>');
-		// var _errPass = $('<div class="error err-password-hide" data-error-password="Введите пароль"></div>');
-		var _errLogin = $('<div class="error error--with-desc err-email-password-hide">Неверный email или пароль</div>'
+		var _textError = $('input').data('error');
+		var _errorTemplate = $('<div class="error err-email-hide"></div>');
+
+		var _errorTemplateData = $('<div class="error error--with-desc err-email-password-hide">Неверный email или пароль</div>'
 			+ '<div class="error-description err-email-password-hide">'
 			+ '<p>Введите верные данные для входа или воспользуйтесь <a href="#">восстановлением пароля, </a>чтобы войти на сайт.</p>'
 			+ '</div>');
+
+		var _emailEmpty = _emailField.attr('data-error');
+		var _passEmpty = _passField.attr('data-error');
+		var _emailFormat = _emailField.attr('data-error-format');
 
 		var init = function(){
 			_formValidate();
@@ -27,6 +29,7 @@ $(document).ready(function(){
 			// Отлавливаем события - клик на кнопке “Войти”
 			_formLogin.on('submit', function(e){
 				e.preventDefault();
+				$('.error').remove();
 
 				// Получаем данные которые ввел пользователь в поля формы
 				var _email = _emailField.val().trim().toLowerCase();
@@ -35,51 +38,42 @@ $(document).ready(function(){
 				// Методы
 
 				function _errorLogin() {
-					_errEmail.text(_emailField.attr('data-field-mail'));
-					_emailField.before(_errEmail);	
-					_errEmail.fadeIn(1000);
+					var _errorEmailEmpty = _errorTemplate.clone().text(_emailEmpty);
+					_emailField.before(_errorEmailEmpty);	
+					_errorEmailEmpty.fadeIn(1000);
 					_emailField.on('focus', function(){
-						_errEmail.fadeOut(1000);
+						_errorEmailEmpty.fadeOut(1000);
 					});
 				}
 
 				function _errorPass() {
-					_errPass.text(_passField.attr('data-field-pass'));
-					_emailField.before(_errPass);	
-					_errPass.fadeIn(1000);
+					var _errorPassEmpty = _errorTemplate.clone().text(_passEmpty);
+					_emailField.before(_errorPassEmpty);	
+					_errorPassEmpty.fadeIn(1000);
 					_passField.on('focus', function(){
-						_errPass.fadeOut(1000);
+						_errorPassEmpty.fadeOut(1000);
 					});
 				}
 
 				function _errorLoginPass() {
-					_emailField.before(_errLogin); // добавляем ошибку перед вводом логина
-					
-					_errLogin.fadeIn(1000); // плавно ее показываем
-
+					_emailField.before(_errorTemplateData);
+					_errorTemplateData.fadeIn(1000); // плавно ее показываем
 					_passField.on('focus', function(){
-						_errLogin.fadeOut(1000);
+						_errorTemplateData.fadeOut(1000);
 					});
-
 					_emailField.on('focus', function(){
-						_errLogin.fadeOut(1000);
+						_errorTemplateData.fadeOut(1000);
 					});
 				}
 
 				function _errorFormatMail() {
-					var _errorFormatMailText = _errFormatMail.data('error-format-email'); // берем текст ошибки из data
-
-					_errFormatMail = _errFormatMail.text(_errorFormatMailText); // добавляем текст в тег
-
-					_emailField.before(_errFormatMail); // добавляем ошибку перед вводом логина
-
-					_errFormatMail.fadeIn(1000);
-
+					var _errorEmailFormat = _errorTemplate.clone().text(_emailFormat);
+					_emailField.before(_errorEmailFormat);	
+					_errorEmailFormat.fadeIn(1000);
 					_emailField.on('focus', function(){
-						_errFormatMail.fadeOut(1000);
+						_errorEmailFormat.fadeOut(1000);
 					});
 				}
-
 
 				// Делаем проверку
 
